@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://k072icyuq05q"]
+
+[ext_resource type="Script" path="res://Scripts/idle_arrow_right.gd" id="1_m5xut"]
+[ext_resource type="Texture2D" uid="uid://ci0lllwqkwf2r" path="res://Assets/Sprites/game/arrow_button/right/arrow_button_right3.png" id="1_pfoyh"]
+[ext_resource type="Texture2D" uid="uid://cyhxjg2cb3ksr" path="res://Assets/Sprites/game/arrow_button/right/arrow_button_right2.png" id="2_jthxj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feu6h"]
+size = Vector2(24.0181, 24.0613)
+
+[sub_resource type="Animation" id="Animation_po8d4"]
+resource_name = "Hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Hit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pcihh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Hit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t80xh"]
+_data = {
+"Hit": SubResource("Animation_po8d4"),
+"RESET": SubResource("Animation_pcihh")
+}
+
+[node name="Idle_ArrowRight" type="Area2D"]
+script = ExtResource("1_m5xut")
+
+[node name="Sprite_Idle" type="Sprite2D" parent="."]
+texture = ExtResource("1_pfoyh")
+
+[node name="Sprite_Hit" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_jthxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.00920057, -0.0190501)
+shape = SubResource("RectangleShape2D_feu6h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t80xh")
+}
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]

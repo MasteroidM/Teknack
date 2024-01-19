@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://feilw0j3803j"]
+
+[ext_resource type="Script" path="res://Scripts/move_arrow_left.gd" id="1_aifs5"]
+[ext_resource type="Texture2D" uid="uid://c5a1xq0xi7vmw" path="res://Assets/Sprites/game/arrow_button/left/arrow_button_left1.png" id="2_o6gb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82thg"]
+size = Vector2(23.8604, 23.9655)
+
+[node name="Move_ArrowLeft" type="Area2D"]
+script = ExtResource("1_aifs5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_o6gb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0593262, -0.0285015)
+shape = SubResource("RectangleShape2D_82thg")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]

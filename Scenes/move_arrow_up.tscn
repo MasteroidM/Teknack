@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ywpx0rmr0r6"]
+
+[ext_resource type="Script" path="res://Scripts/move_arrow_up.gd" id="1_fdt7m"]
+[ext_resource type="Texture2D" uid="uid://bywa5sms71ihr" path="res://Assets/Sprites/game/arrow_button/up/arrow_button_up1.png" id="1_w2ih2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5nt7"]
+size = Vector2(24.169, 23.9041)
+
+[node name="Move_ArrowUp" type="Area2D"]
+script = ExtResource("1_fdt7m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_w2ih2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0124893, -0.0273929)
+shape = SubResource("RectangleShape2D_q5nt7")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]

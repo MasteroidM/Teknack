@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://crdfmk8dcqddc"]
+
+[ext_resource type="Script" path="res://Scripts/idle_arrow_down.gd" id="1_bq050"]
+[ext_resource type="Texture2D" uid="uid://dtu02thtois6h" path="res://Assets/Sprites/game/arrow_button/down/arrow_button_up3.png" id="2_uipgp"]
+[ext_resource type="Texture2D" uid="uid://j8y8oqy8f3rt" path="res://Assets/Sprites/game/arrow_button/down/arrow_button_up2.png" id="3_04mar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kusbk"]
+size = Vector2(23.8585, 23.8585)
+
+[sub_resource type="Animation" id="Animation_hmq5x"]
+resource_name = "Hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Hit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7dgo3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Hit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxpvu"]
+_data = {
+"Hit": SubResource("Animation_hmq5x"),
+"RESET": SubResource("Animation_7dgo3")
+}
+
+[node name="Idle_ArrowDown" type="Area2D"]
+script = ExtResource("1_bq050")
+
+[node name="Sprite_Idle" type="Sprite2D" parent="."]
+texture = ExtResource("2_uipgp")
+
+[node name="Sprite_Hit" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_04mar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0405922, 0.00555706)
+shape = SubResource("RectangleShape2D_kusbk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yxpvu")
+}
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
