@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=3 uid="uid://54ogdgm10iay"]
+
+[ext_resource type="Texture2D" uid="uid://2dsr6mfgnyyj" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__000.png" id="1_gn143"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_x7er4"]
+[ext_resource type="Texture2D" uid="uid://8wn1h1v7pj03" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__001.png" id="2_11arn"]
+[ext_resource type="Texture2D" uid="uid://bqtnuf64ok1of" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__002.png" id="3_qjy8f"]
+[ext_resource type="Texture2D" uid="uid://dctf8usvrgwus" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__003.png" id="4_yk00i"]
+[ext_resource type="Texture2D" uid="uid://drm7fem1n6aiw" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__004.png" id="5_m1sam"]
+[ext_resource type="Texture2D" uid="uid://cv5pq5xd8bj8v" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__005.png" id="6_lnw47"]
+[ext_resource type="Texture2D" uid="uid://y7ycnvh84gxi" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__006.png" id="7_0f6fq"]
+[ext_resource type="Texture2D" uid="uid://bm27mj6q1b5xx" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__007.png" id="8_mya12"]
+[ext_resource type="Texture2D" uid="uid://c6h2er7c3rfp8" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__008.png" id="9_x6i3b"]
+[ext_resource type="Texture2D" uid="uid://b03m3vtfb3yy5" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__009.png" id="10_ocjhl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rsv81"]
+radius = 160.0
+height = 484.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y11ut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gn143")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_11arn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qjy8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yk00i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m1sam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lnw47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0f6fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mya12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x6i3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ocjhl")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_gegi4"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_ri523"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jphr7"]
+_data = {
+"Idle": SubResource("Animation_gegi4"),
+"RESET": SubResource("Animation_ri523")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_x7er4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rsv81")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_y11ut")
+animation = &"Idle"
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jphr7")
+}
+autoplay = "Idle"
