@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://wkos5bbcwbc"]
+
+[ext_resource type="Script" path="res://Scenes/menu.gd" id="1_8oigb"]
+[ext_resource type="PackedScene" uid="uid://bnm7fqbj225ew" path="res://Scenes/BG.tscn" id="2_8d6gq"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_8oigb")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 648.0
+offset_top = 186.0
+offset_right = 1001.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 646.0
+offset_top = 354.0
+offset_right = 999.0
+offset_bottom = 481.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="LinkButton" type="LinkButton" parent="."]
+offset_left = 725.0
+offset_top = 548.0
+offset_right = 901.0
+offset_bottom = 578.0
+theme_override_font_sizes/font_size = 20
+text = "Developer Credit"
+
+[node name="BG" parent="." instance=ExtResource("2_8d6gq")]
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="LinkButton" to="." method="_on_link_button_pressed"]
