@@ -45,3 +45,7 @@ func _on_timer_timeout():
 		var ArrowDownInstance = ArrowDown.instantiate()
 		get_parent().add_child(ArrowDownInstance)
 		ArrowDownInstance.position = $CreateArrows/Spawner_ArrowDown.global_position
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://.godot/exported/133200997/export-53a0af8f00fbc899d4d541c34a803049-menu.scn")
