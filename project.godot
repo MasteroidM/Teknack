@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Teknack"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+
+[display]
+
+window/size/viewport_width=1612
+window/size/viewport_height=720
 
 [rendering]
 
