@@ -28,28 +28,46 @@ position = Vector2(1003, 292)
 [node name="CreateArrows" type="Node2D" parent="."]
 
 [node name="Spawner_ArrowUp" type="Marker2D" parent="CreateArrows"]
-position = Vector2(321, 107)
+position = Vector2(300, 107)
 
 [node name="Spawner_ArrowDown" type="Marker2D" parent="CreateArrows"]
-position = Vector2(257, 107)
+position = Vector2(200, 107)
 
 [node name="Spawner_ArrowLeft" type="Marker2D" parent="CreateArrows"]
-position = Vector2(193, 107)
+position = Vector2(100, 107)
 
 [node name="Spawner_ArrowRight" type="Marker2D" parent="CreateArrows"]
-position = Vector2(385, 107)
+position = Vector2(400, 107)
 
 [node name="Idle_ArrowDown" parent="." instance=ExtResource("1_dqcw8")]
-position = Vector2(256, 320)
+position = Vector2(200, 320)
+scale = Vector2(2, 2)
+
+[node name="ArrowDown" type="Button" parent="Idle_ArrowDown"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -16.0
+offset_top = -13.5
+offset_right = 16.0
+offset_bottom = 14.5
 
 [node name="Idle_ArrowLeft" parent="." instance=ExtResource("2_umwhe")]
-position = Vector2(192, 320)
+position = Vector2(100, 320)
+scale = Vector2(2, 2)
+
+[node name="ArrowLeft" type="Button" parent="Idle_ArrowLeft"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -16.0
+offset_top = -14.0
+offset_right = 16.0
+offset_bottom = 14.0
 
 [node name="Idle_ArrowRight" parent="." instance=ExtResource("3_oplun")]
-position = Vector2(384, 320)
+position = Vector2(400, 320)
+scale = Vector2(2, 2)
 
 [node name="Idle_ArrowUp" parent="." instance=ExtResource("4_w718u")]
-position = Vector2(320, 320)
+position = Vector2(300, 320)
+scale = Vector2(2, 2)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -79,7 +97,7 @@ position = Vector2(779, 600)
 shape = SubResource("RectangleShape2D_nnmyl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-41, 275)
+position = Vector2(-42, 277)
 shape = SubResource("RectangleShape2D_dn22a")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -102,5 +120,9 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "Back to menu"
 
+[connection signal="pressed" from="Idle_ArrowDown/ArrowDown" to="Player" method="_on_arrow_down_pressed"]
+[connection signal="pressed" from="Idle_ArrowDown/ArrowDown" to="Idle_ArrowDown" method="_on_arrow_down_pressed"]
+[connection signal="pressed" from="Idle_ArrowLeft/ArrowLeft" to="Player" method="_on_arrow_left_pressed"]
+[connection signal="pressed" from="Idle_ArrowLeft/ArrowLeft" to="Idle_ArrowLeft" method="_on_arrow_left_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
