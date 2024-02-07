@@ -32,4 +32,4 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	sensor = 0
 	Global.sensor_ArrowDown = 0
-
+		
