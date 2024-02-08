@@ -36,13 +36,11 @@ func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 
 func _on_arrow_left_pressed():
 	if sensor == 1:
-		if Input.is_action_just_pressed("ui_left"):
-			animp.play("Hit")
-			print("Left Hit")
-			Global.score += 10
-	
+		animp.play("Hit")
+		print("Left Hit")
+		Global.score += 10
 	if sensor == 0:
-		if Input.is_action_just_pressed("ui_left"):
-			animp.play("RESET")
-			print("Left Bad")
-			Global.score -= 5
+		animp.play("RESET")
+		print("Left Bad")
+		Global.score -= 5
+	

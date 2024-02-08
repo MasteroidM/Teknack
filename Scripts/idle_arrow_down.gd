@@ -32,4 +32,15 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	sensor = 0
 	Global.sensor_ArrowDown = 0
-		
+
+
+func _on_arrow_down_pressed():
+	if sensor == 1:
+		animp.play("Hit")
+		print("Down Hit")
+		Global.score += 10
+
+	if sensor == 0:
+		animp.play("RESET")
+		print("Down Bad")
+		Global.score -= 5
