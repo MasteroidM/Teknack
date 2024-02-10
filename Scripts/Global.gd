@@ -5,6 +5,9 @@ extends Node
 # Score
 var score = 0
 
+# Taps
+var taps = 0
+
 # Sensor
 var sensor_ArrowLeft = 0
 var sensor_ArrowRight = 0

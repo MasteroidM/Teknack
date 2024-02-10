@@ -34,6 +34,7 @@ func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 
 
 func _on_arrow_up_pressed():
+	Global.taps += 1
 	if sensor == 1:
 		animp.play("Hit")
 		print("Up Hit")

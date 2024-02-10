@@ -16,6 +16,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Score/Label.text = str(Global.score)
+	$Taps/Label2.text = str(Global.taps)
 	pass
 
 
