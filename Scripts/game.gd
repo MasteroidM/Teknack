@@ -17,6 +17,17 @@ func _ready():
 func _process(delta):
 	$Score/Label.text = str(Global.score)
 	$Taps/Label2.text = str(Global.taps)
+	# TODO: ADD LABEL FOR MISS, IF MISS > 5 THEN GAME OVER
+	#if(Global.score < 0):
+		#get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+		#Global.score = 0
+		#Global.miss = 0
+		#Global.taps = 0
+	if(Global.miss > 5):
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+		Global.miss = 0
+		Global.score = 0
+		Global.taps = 0
 	pass
 
 
@@ -49,5 +60,8 @@ func _on_timer_timeout():
 
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://.godot/exported/133200997/export-53a0af8f00fbc899d4d541c34a803049-menu.scn")
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	Global.score = 0
+	Global.taps = 0
+	Global.miss = 0
 	

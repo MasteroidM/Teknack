@@ -14,12 +14,14 @@ func _process(delta):
 	# Sensor and pressed "Hit"
 	if sensor == 1:
 		if Input.is_action_just_pressed("ui_up"):
+			Global.taps += 1
 			animp.play("Hit")
 			print("Up Hit")
 			Global.score += 10
 	
 	if sensor == 0:
 		if Input.is_action_just_pressed("ui_up"):
+			Global.taps += 1
 			animp.play("RESET")
 			print("Up Bad")
 			Global.score -= 5
@@ -39,6 +41,7 @@ func _on_arrow_up_pressed():
 		animp.play("Hit")
 		print("Up Hit")
 		Global.score += 10
+		Global.emit_signal("up_hit")
 	if sensor == 0:
 		animp.play("RESET")
 		print("Up Bad")
