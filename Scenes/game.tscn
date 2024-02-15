@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8rjsdd368it0"]
+[gd_scene load_steps=13 format=3 uid="uid://b8rjsdd368it0"]
 
 [ext_resource type="PackedScene" uid="uid://crdfmk8dcqddc" path="res://Scenes/idle_arrow_down.tscn" id="1_dqcw8"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_e2bxo"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bugh832baa6rh" path="res://Assets/Sounds/tutorial.mp3" id="6_hye2t"]
 [ext_resource type="FontFile" uid="uid://uq8kdwahrvwm" path="res://Assets/Fonts/manaspc.ttf" id="7_d8b7l"]
 [ext_resource type="PackedScene" uid="uid://54ogdgm10iay" path="res://Player/player.tscn" id="8_4smfa"]
+[ext_resource type="Script" path="res://Scenes/gameOverLabel.gd" id="10_vtlcp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnmyl"]
 size = Vector2(1752, 121)
@@ -139,6 +140,30 @@ offset_right = 610.0
 offset_bottom = 54.0
 text = "Taps : "
 
+[node name="Miss" type="Node2D" parent="."]
+position = Vector2(388, -1)
+
+[node name="Label2" type="Label" parent="Miss"]
+offset_left = 476.0
+offset_top = 14.0
+offset_right = 796.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("7_d8b7l")
+theme_override_font_sizes/font_size = 40
+text = "00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Miss"]
+offset_left = 551.0
+offset_top = 21.0
+offset_right = 610.0
+offset_bottom = 54.0
+text = "Miss : "
+metadata/_edit_use_anchors_ = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -173,6 +198,34 @@ offset_top = 530.0
 offset_right = 1693.0
 offset_bottom = 730.0
 metadata/_edit_use_anchors_ = true
+
+[node name="gameOverLabel" type="Node2D" parent="."]
+position = Vector2(320, 160)
+script = ExtResource("10_vtlcp")
+
+[node name="gameOverLabel" type="Label" parent="gameOverLabel"]
+offset_right = 938.0
+offset_bottom = 273.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.772549, 0, 0.760784, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0, 0.788235, 1)
+theme_override_font_sizes/font_size = 170
+text = "Game Over"
+
+[node name="gameOverScoreLabel" type="Label" parent="gameOverLabel"]
+offset_left = 29.0
+offset_top = -12.0
+offset_right = 140.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 27
+text = "Your Score : "
+
+[node name="gameOverScoreValue" type="Label" parent="gameOverLabel"]
+offset_left = 191.0
+offset_top = -15.0
+offset_right = 354.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 27
 
 [connection signal="pressed" from="Idle_ArrowDown/ArrowDown" to="Player" method="_on_arrow_down_pressed"]
 [connection signal="pressed" from="Idle_ArrowDown/ArrowDown" to="Idle_ArrowDown" method="_on_arrow_down_pressed"]
