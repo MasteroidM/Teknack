@@ -11,16 +11,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	# Sensor and pressed "Hit"
 	if sensor == 1:
 		if Input.is_action_just_pressed("ui_right"):
+			Global.taps += 1
 			animp.play("Hit")
 			print("Right Hit")
 			Global.score += 10
 	
 	if sensor == 0:
 		if Input.is_action_just_pressed("ui_right"):
+			Global.taps += 1
 			animp.play("RESET")
 			print("Right Bad")
 			Global.score -= 5
@@ -32,3 +33,16 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	sensor = 0
 	Global.sensor_ArrowRight = 0
+
+
+func _on_arrow_right_pressed():
+	Global.taps += 1
+	if sensor == 1:
+		animp.play("Hit")
+		print("Right Hit")
+		Global.score += 10
+		Global.emit_signal("right_hit")
+	if sensor == 0:
+		animp.play("RESET")
+		print("Right Bad")
+		Global.score -= 5

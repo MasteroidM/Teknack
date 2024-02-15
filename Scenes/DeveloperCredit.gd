@@ -12,4 +12,4 @@ func _process(delta):
 
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://.godot/exported/133200997/export-53a0af8f00fbc899d4d541c34a803049-menu.scn")
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

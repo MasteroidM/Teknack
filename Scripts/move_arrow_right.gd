@@ -6,6 +6,7 @@ var sensor = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.connect("right_hit", Callable(self, "_on_arrow_right_pressed"))
 	pass # Replace with function body.
 
 
@@ -18,6 +19,7 @@ func _process(delta):
 	if position.y > 500:
 		queue_free()
 		print("Right Arrow Exited")
+		Global.miss = Global.miss + 1
 
 	# Sensor and pressed
 	if sensor == 1:
@@ -32,3 +34,8 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 
 func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	sensor = 0
+
+func _on_arrow_right_pressed():
+	if sensor == 1:
+		if Global.sensor_ArrowRight == 1:
+				queue_free()

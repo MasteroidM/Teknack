@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b03m3vtfb3yy5" path="res://Assets/Sprites/game/ninjagirlnew/png/Idle__009.png" id="10_ocjhl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rsv81"]
-radius = 160.0
-height = 484.0
+radius = 143.0
+height = 428.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y11ut"]
 animations = [{
@@ -110,7 +110,8 @@ script = ExtResource("1_x7er4")
 shape = SubResource("CapsuleShape2D_rsv81")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(-10, 12)
+scale = Vector2(0.82069, 0.804)
 sprite_frames = SubResource("SpriteFrames_y11ut")
 animation = &"Idle"
 frame = 1
