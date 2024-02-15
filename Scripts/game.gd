@@ -17,6 +17,7 @@ func _ready():
 func _process(delta):
 	$Score/Label.text = str(Global.score)
 	$Taps/Label2.text = str(Global.taps)
+	$Miss/Label2.text = str(Global.miss)
 	# TODO: ADD LABEL FOR MISS, IF MISS > 5 THEN GAME OVER
 	#if(Global.score < 0):
 		#get_tree().change_scene_to_file("res://Scenes/menu.tscn")
@@ -24,10 +25,23 @@ func _process(delta):
 		#Global.miss = 0
 		#Global.taps = 0
 	if(Global.miss > 5):
-		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+		$gameOverLabel/gameOverLabel.visible=true
+		$gameOverLabel/gameOverScoreLabel.visible=true
+		$gameOverLabel/gameOverScoreValue.visible=true
+		$gameOverLabel/gameOverScoreValue.text = str(Global.score)
+	
+		# Reset game variables
 		Global.miss = 0
 		Global.score = 0
 		Global.taps = 0
+		
+		# Pause execution for 3 seconds
+		# Wait for 3 seconds
+		await get_tree().create_timer(3).timeout
+		
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+		
+		
 	pass
 
 
@@ -61,6 +75,9 @@ func _on_timer_timeout():
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	$gameOverLabel/gameOverLabel.visible=false
+	$gameOverLabel/gameOverScoreLabel.visible=false
+	$gameOverLabel/gameOverScoreValue.visible=false
 	Global.score = 0
 	Global.taps = 0
 	Global.miss = 0
