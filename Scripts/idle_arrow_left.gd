@@ -13,14 +13,14 @@ func _process(delta):
 	# Sensor and pressed "Hit"
 	if sensor == 1:
 		if Input.is_action_just_pressed("ui_left"):
-			Global.taps += 1
+			#Global.taps += 1
 			animp.play("Hit")
 			print("Left Hit")
 			Global.score += 10
 	
 	if sensor == 0:
 		if Input.is_action_just_pressed("ui_left"):
-			Global.taps += 1
+			#Global.taps += 1
 			animp.play("RESET")
 			print("Left Bad")
 			Global.score -= 5
